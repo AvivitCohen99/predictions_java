@@ -8,7 +8,6 @@ import execution.context.Context;
 import org.w3c.dom.Element;
 
 public class KillAction extends AbstractAction {
-
     public KillAction(EntityDefinition entityDefinition) {
         super(ActionType.KILL, entityDefinition);
     }

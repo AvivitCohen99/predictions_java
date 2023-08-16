@@ -36,6 +36,7 @@ public class WorldParserImpl implements WorldParser {
             Termination termination = Termination.parse((Element) doc.getElementsByTagName("PRD-termination").item(0));
 
             World world = new World(env, entities, rules, termination);
+            System.out.println(world);
         } catch (Exception e) {
             e.printStackTrace();
         }

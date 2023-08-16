@@ -7,6 +7,7 @@ import definition.value.generator.fixed.FixedValueGenerator;
 import definition.value.generator.random.impl.numeric.RandomIntegerGenerator;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 
 
 public class IntegerPropertyDefinition extends AbstractPropertyDefinition<Integer> {
@@ -16,15 +17,21 @@ public class IntegerPropertyDefinition extends AbstractPropertyDefinition<Intege
 
         ValueGenerator generator;
 
-        Boolean isRandom = propValueElement != null ? Boolean.parseBoolean(propValueElement.getAttribute("random-initialize")) : true;
+        Boolean isRandom = propValueElement == null || Boolean.parseBoolean(propValueElement.getAttribute("random-initialize")); // TODO: if no value ask the user
         if (!isRandom) {
             Integer init = Integer.parseInt(propValueElement.getAttribute("init"));
             generator = new FixedValueGenerator(init);
         } else {
-            NamedNodeMap range = propertyElement.getElementsByTagName("PRD-range").item(0).getAttributes();
-            Integer from = Integer.parseInt(range.getNamedItem("from").getNodeValue());
-            Integer to = Integer.parseInt(range.getNamedItem("to").getNodeValue());
-            generator = new RandomIntegerGenerator(from, to);
+            Node rangeNode = propertyElement.getElementsByTagName("PRD-range").item(0);
+            if(rangeNode != null) {
+                NamedNodeMap rangeAttributes = rangeNode.getAttributes();
+                Integer from = Integer.parseInt(rangeAttributes.getNamedItem("from").getNodeValue());
+                Integer to = Integer.parseInt(rangeAttributes.getNamedItem("to").getNodeValue());
+                generator = new RandomIntegerGenerator(from, to);
+            }
+            else {
+                generator = new RandomIntegerGenerator(-1, -1);
+            }
         }
         return new IntegerPropertyDefinition(name, generator);
     }

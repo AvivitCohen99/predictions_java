@@ -1,7 +1,9 @@
 package definition.property.api;
 
-public interface PropertyDefinition {
+public interface PropertyDefinition<T> {
     String getName();
     PropertyType getType();
-    Object generateValue();
+    T generateValue();
+    void setValue(T value);
+    T getValue();
 }

@@ -7,14 +7,13 @@ import definition.entity.EntityDefinition;
 import execution.context.Context;
 import org.w3c.dom.Element;
 
-public class KillAction extends AbstractAction {
-
-    public KillAction(EntityDefinition entityDefinition) {
-        super(ActionType.KILL, entityDefinition);
+public class ConditionAction extends AbstractAction {
+    protected ConditionAction(ActionType actionType, EntityDefinition entityDefinition) {
+        super(actionType, entityDefinition);
     }
 
     @Override
     public void invoke(Context context) {
-        context.removeEntity(context.getPrimaryEntityInstance());
+
     }
 }

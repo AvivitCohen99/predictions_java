@@ -11,8 +11,9 @@ public class RuleImpl implements Rule {
     private Activation activation;
     private final List<Action> actions;
 
-    public RuleImpl(String name) {
+    public RuleImpl(String name, Activation activation) {
         this.name = name;
+        this.activation = activation;
         actions = new ArrayList<>();
     }
 

@@ -1,11 +1,15 @@
 package action.impl;
 
 import action.api.AbstractAction;
+import action.api.Action;
 import action.api.ActionType;
 import definition.entity.EntityDefinition;
 import definition.property.api.PropertyType;
 import execution.context.Context;
 import execution.instance.property.PropertyInstance;
+import org.w3c.dom.Element;
+
+import javax.swing.text.html.parser.Parser;
 
 public class IncreaseAction extends AbstractAction {
 

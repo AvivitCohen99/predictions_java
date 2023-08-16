@@ -2,7 +2,7 @@ package action.api;
 
 import definition.entity.EntityDefinition;
 
-public abstract class AbstractAction implements Action {
+public abstract class AbstractAction implements Action{
 
     private final ActionType actionType;
     private final EntityDefinition entityDefinition;

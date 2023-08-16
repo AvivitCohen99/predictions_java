@@ -1,5 +1,5 @@
 package action.api;
 
 public enum ActionType {
-    INCREASE, DECREASE, KILL
+    INCREASE, DECREASE, KILL, CONDITION
 }
